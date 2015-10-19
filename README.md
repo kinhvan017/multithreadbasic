@@ -25,3 +25,24 @@ write_lock.release()
 
 Concurrent programming and Python
 ---------------------------------
+- Python hỗ trợ cả message passing and thread-based concurrent programming
+- Python sử dụng internal global interpreter lock (the GIL) chỉ cho phép một Python Thread
+thực hiện trong 1 thời điểm. Điều này sẽ giới hạn python program chỉ chạy trên 1 core, bât kể hệ
+thống cho bao nhiêu core.
+- If an application is mostly I/O bound, it is
+generally fine to use threads because extra processors aren’t going to do much to help a
+program that spends most of its time waiting for events. For applications that involve
+heavy amounts of CPU processing, using threads to subdivide work doesn’t provide any
+benefit and will make the program run slower (often
+much
+slower than you would
+guess).
+
+multiprocessing
+---------------
+
+
+Interprocess Communication
+--------------------------
+- Two primary forms of interprocess communication are supported by the multiprocessing module: pipes and queues. Both methods are implemented using message passing. However, the queue interface is meant to mimic the use of queues
+commonly used with thread programs
